@@ -277,7 +277,7 @@ angular.module("ngDraggable", [])
 
                 var onDropCallback = $parse(attrs.ngDropSuccess);// || function(){};
 
-                var onDragStartCallback = $parse(attrs.ngDragStart);
+                var onDragStartCallback = undefined; //$parse(attrs.ngDragStart);
                 var onDragStopCallback = $parse(attrs.ngDragStop);
                 var onDragMoveCallback = $parse(attrs.ngDragMove);
 
