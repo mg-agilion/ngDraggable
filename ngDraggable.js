@@ -310,7 +310,7 @@ angular.module("ngDraggable", [])
                     if(! _dropEnabled)return;
                     isTouching(obj.x,obj.y,obj.element);
 
-                    if (attrs.ngDragStart) {
+                    if (attrs.ngDragStart && onDragStartCallback) {
                         $timeout(function(){
                             onDragStartCallback(scope, {$data: obj.data, $event: obj});
                         });
@@ -440,6 +440,9 @@ angular.module("ngDraggable", [])
                         element.css('width', obj.element[0].offsetWidth);
                         element.css('height', obj.element[0].offsetHeight);
 
+                        var _orig = angular.element(obj.element[0]);
+                        _orig.css('visibility', 'hidden');
+
                         moveElement(obj.tx, obj.ty);
                     }
 
@@ -457,6 +460,8 @@ angular.module("ngDraggable", [])
                     //moveElement(obj.tx,obj.ty);
                     if(_allowClone) {
                         reset();
+                        var _orig = angular.element(obj.element[0]);
+                        _orig.css('visibility', 'visible');
                     }
                 };
 
